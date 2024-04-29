@@ -13,7 +13,7 @@ RUN mvn package -DskipTests
 FROM openjdk:17-alpine
 
 # Copy the built JAR file from the builder stage
-COPY --from=builder /app/target/spring-boot-demo*.jar /spring-web-sample.jar
+COPY --from=builder /app/target/spring*.jar /spring-web-sample.jar
 
 # Define the command to run the application
 CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/spring-web-sample.jar"]
